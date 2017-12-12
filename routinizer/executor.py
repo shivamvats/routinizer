@@ -42,6 +42,11 @@ def loadData(linkLocation):
         index = (readIndex + 1) % len(data.entries)
     return (data, index)
 
+def loadCodingRoutine():
+    subprocess.call(["notify-send", "Routinizer", "Solve a haskell problem today"])
+    os.system("gnome-terminal -e 'bash -c \"cd" +
+            " ~/Documents/Coding/exercism/haskell; exec bash\"'")
+
 def executeRoutine():
     data, index = loadData(os.path.join(dir, REL_SRC_FILE))
     link = data.entries[index]['link']
@@ -53,3 +58,4 @@ def executeRoutine():
     # Show a notification.
     subprocess.call(["notify-send", "Routinizer", "Check you browser for" +
                     " today's essay."])
+    loadCodingRoutine()
